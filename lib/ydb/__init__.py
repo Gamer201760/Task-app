@@ -1,13 +1,12 @@
 import os
+from logging import getLogger
 
 import ydb
-from dotenv import load_dotenv
 
-load_dotenv()
+logger = getLogger(__name__)
 
 endpoint = os.getenv('YDB_ENDPOINT')
 database = os.getenv('YDB_DATABASE', '/local')
-
 driver = ydb.aio.Driver(
     endpoint=endpoint,
     database=database,
@@ -17,6 +16,7 @@ pool = ydb.aio.SessionPool(driver, size=10)
 
 
 async def connect():
+    logger.info(f'connect to {endpoint}{database}')
     await driver.wait(timeout=10)
 
 

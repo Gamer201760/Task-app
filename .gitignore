@@ -3,3 +3,5 @@ build.sh
 .ruff_cache
 .vscode
 .env
+ydb_certs
+ydb_data

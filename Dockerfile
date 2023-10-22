@@ -1,4 +1,4 @@
-FROM python:3.11-alpine
+FROM python:3.11-slim
 
 WORKDIR /todo
 
@@ -8,4 +8,4 @@ RUN pip install --no-cache-dir --upgrade -r /todo/requirements.txt
 
 COPY . /todo/
 
-CMD uvicorn main:app --proxy-headers --host 0.0.0.0 --port $PORT
+CMD uvicorn main:app --proxy-headers --host 0.0.0.0 --port 8000
